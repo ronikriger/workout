@@ -9,10 +9,10 @@ from fastapi.security import HTTPBearer
 from sqlalchemy.orm import Session
 from pydantic import BaseModel, Field
 
-from app.database import get_db
+from app.db.session import get_db
 from app.services.cue_manager import CueManager
 from app.models.user import User
-from app.auth.jwt_handler import decode_jwt
+from app.services.auth_service import get_current_active_user
 
 router = APIRouter(prefix="/api/cues", tags=["voice-cues"])
 security = HTTPBearer()
@@ -42,9 +42,9 @@ class VoiceSettingsResponse(BaseModel):
 
 class CueCreate(BaseModel):
     phrase: str = Field(..., min_length=1, max_length=200)
-    trigger_type: str = Field(..., regex="^(rep_phase|form_issue|rep_count|time_interval)$")
+    trigger_type: str = Field(..., pattern="^(rep_phase|form_issue|rep_count|time_interval)$")
     trigger_condition: str = Field(..., min_length=1, max_length=50)
-    exercise_type: str = Field("all", regex="^(squat|deadlift|all)$")
+    exercise_type: str = Field("all", pattern="^(squat|deadlift|all)$")
     is_enabled: bool = True
     priority: int = Field(3, ge=1, le=5)
     hip_angle_min: Optional[float] = Field(None, ge=0, le=180)
@@ -55,9 +55,9 @@ class CueCreate(BaseModel):
 
 class CueUpdate(BaseModel):
     phrase: Optional[str] = Field(None, min_length=1, max_length=200)
-    trigger_type: Optional[str] = Field(None, regex="^(rep_phase|form_issue|rep_count|time_interval)$")
+    trigger_type: Optional[str] = Field(None, pattern="^(rep_phase|form_issue|rep_count|time_interval)$")
     trigger_condition: Optional[str] = Field(None, min_length=1, max_length=50)
-    exercise_type: Optional[str] = Field(None, regex="^(squat|deadlift|all)$")
+    exercise_type: Optional[str] = Field(None, pattern="^(squat|deadlift|all)$")
     is_enabled: Optional[bool] = None
     priority: Optional[int] = Field(None, ge=1, le=5)
     hip_angle_min: Optional[float] = Field(None, ge=0, le=180)
@@ -84,38 +84,17 @@ class CueResponse(BaseModel):
     updated_at: Optional[str]
 
 class CueTriggersRequest(BaseModel):
-    exercise_type: str = Field(..., regex="^(squat|deadlift)$")
-    rep_phase: str = Field(..., regex="^(descent|bottom|ascent|top)$")
+    exercise_type: str = Field(..., pattern="^(squat|deadlift)$")
+    rep_phase: str = Field(..., pattern="^(descent|bottom|ascent|top)$")
     hip_angle: float = Field(..., ge=0, le=180)
     spine_angle: float = Field(..., ge=-90, le=90)
     form_score: float = Field(..., ge=0, le=100)
     rep_count: int = Field(..., ge=0)
     session_duration: int = Field(..., ge=0)
 
-def get_current_user(token: str = Depends(security), db: Session = Depends(get_db)):
-    """Get current user from JWT token"""
-    try:
-        payload = decode_jwt(token.credentials)
-        user_id = payload.get("user_id")
-        if not user_id:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid token"
-            )
-        
-        user = db.query(User).filter(User.id == user_id).first()
-        if not user:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="User not found"
-            )
-        
-        return user
-    except Exception as e:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid token"
-        )
+def get_current_user(current_user: User = Depends(get_current_active_user)):
+    """Get current user from auth service"""
+    return current_user
 
 # Voice Settings Endpoints
 

@@ -12,10 +12,12 @@ import {
     TouchableOpacity,
     Animated,
     Dimensions,
+    Image,
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
+import { LinearGradient } from 'expo-linear-gradient';
 
-interface LeaderboardEntry {
+export interface LeaderboardEntry {
     userId: string;
     username: string;
     level: number;
@@ -42,7 +44,7 @@ export default function AmazingLeaderboard({
     type,
     onTypeChange,
     onUserPress
-}: AmazingLeaderboardProps): JSX.Element {
+}: AmazingLeaderboardProps): React.JSX.Element {
     const [selectedType, setSelectedType] = useState(type);
     const crownAnimation = useRef(new Animated.Value(0)).current;
     const rankAnimations = useRef(data.map(() => new Animated.Value(0))).current;

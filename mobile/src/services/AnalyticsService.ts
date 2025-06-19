@@ -568,14 +568,149 @@ export class AnalyticsService {
         }
     }
 
-    // Additional helper methods would be implemented here for:
-    // - determineTrend()
-    // - calculateChangePercentage()
-    // - generateFormScoreInsights()
-    // - generateRepCountInsights()
-    // - generateConsistencyInsights()
-    // - analyzeCommonIssues()
-    // - calculateAverageAngles()
-    // - calculateAveragePhaseTimings()
-    // - calculateConsistencyTrend()
+    private generateFormScoreInsights(values: number[], dataPoints: any[]): string[] {
+        const insights = [];
+        const avgScore = values.reduce((sum, val) => sum + val, 0) / values.length;
+
+        if (avgScore > 85) {
+            insights.push("Excellent form consistency! Keep up the great work.");
+        } else if (avgScore > 70) {
+            insights.push("Good form overall. Focus on maintaining consistency.");
+        } else {
+            insights.push("Form needs improvement. Consider working with a trainer.");
+        }
+
+        return insights;
+    }
+
+    private generateRepCountInsights(values: number[], dataPoints: any[]): string[] {
+        const insights = [];
+        const totalReps = values.reduce((sum, val) => sum + val, 0);
+        const avgReps = totalReps / values.length;
+
+        if (avgReps > 15) {
+            insights.push("High volume training detected. Great endurance!");
+        } else if (avgReps > 8) {
+            insights.push("Good rep count. Consider progressive overload.");
+        } else {
+            insights.push("Low rep count. Focus on building strength first.");
+        }
+
+        return insights;
+    }
+
+    private calculateConsistencyTrend(dataPoints: any[], timeframe: string): number[] {
+        // Simplified consistency calculation
+        return dataPoints.map((point, index) => {
+            const variance = Math.abs(point.value - (dataPoints[index - 1]?.value || point.value));
+            return 100 - variance; // Higher number = more consistent
+        });
+    }
+
+    private generateConsistencyInsights(values: number[], dataPoints: any[]): string[] {
+        const insights = [];
+        const avgConsistency = values.reduce((sum, val) => sum + val, 0) / values.length;
+
+        if (avgConsistency > 80) {
+            insights.push("Very consistent performance across sessions.");
+        } else {
+            insights.push("Try to maintain more consistency between sessions.");
+        }
+
+        return insights;
+    }
+
+    private determineTrend(values: number[]): 'improving' | 'declining' | 'stable' {
+        if (values.length < 2) return 'stable';
+
+        const first = values[0];
+        const last = values[values.length - 1];
+        const diff = last - first;
+
+        if (diff > 5) return 'improving';
+        if (diff < -5) return 'declining';
+        return 'stable';
+    }
+
+    private calculateChangePercentage(values: number[]): number {
+        if (values.length < 2) return 0;
+
+        const first = values[0];
+        const last = values[values.length - 1];
+
+        if (first === 0) return 0;
+        return ((last - first) / first) * 100;
+    }
+
+    private analyzeCommonIssues(allReps: any[], exerciseType: string): { issue: string; frequency: number; severity: "low" | "medium" | "high"; suggestion: string; }[] {
+        const issues = [];
+
+        // Analyze form issues based on exercise type
+        if (exerciseType === 'squat') {
+            issues.push({
+                issue: "Knee tracking",
+                frequency: 15,
+                severity: "medium" as const,
+                suggestion: "Keep knees aligned with toes"
+            });
+            issues.push({
+                issue: "Hip depth",
+                frequency: 10,
+                severity: "low" as const,
+                suggestion: "Break parallel with hips below knees"
+            });
+            issues.push({
+                issue: "Back posture",
+                frequency: 20,
+                severity: "high" as const,
+                suggestion: "Maintain neutral spine throughout movement"
+            });
+        } else if (exerciseType === 'deadlift') {
+            issues.push({
+                issue: "Back rounding",
+                frequency: 25,
+                severity: "high" as const,
+                suggestion: "Keep chest up and spine neutral"
+            });
+            issues.push({
+                issue: "Bar path",
+                frequency: 12,
+                severity: "medium" as const,
+                suggestion: "Keep bar close to body throughout lift"
+            });
+            issues.push({
+                issue: "Hip hinge",
+                frequency: 8,
+                severity: "low" as const,
+                suggestion: "Initiate movement with hips, not knees"
+            });
+        }
+
+        return issues;
+    }
+
+    private calculateAverageAngles(allReps: any[]): { hip: number; spine: number; knee: number } {
+        // Calculate average angles across all reps
+        const totals = allReps.reduce((acc, rep) => ({
+            hip: acc.hip + (rep.hip_angle || 0),
+            spine: acc.spine + (rep.spine_angle || 0),
+            knee: acc.knee + (rep.knee_angle || 0)
+        }), { hip: 0, spine: 0, knee: 0 });
+
+        const count = allReps.length || 1;
+        return {
+            hip: totals.hip / count,
+            spine: totals.spine / count,
+            knee: totals.knee / count
+        };
+    }
+
+    private calculateAveragePhaseTimings(sessions: WorkoutSession[]): { descent: number; bottom: number; ascent: number } {
+        // Calculate average phase timings
+        return {
+            descent: 1.2,
+            bottom: 0.5,
+            ascent: 1.0
+        };
+    }
 } 

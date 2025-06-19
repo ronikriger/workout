@@ -12,22 +12,28 @@ import {
     Switch,
     TouchableOpacity,
     Alert,
-    Slider,
     Modal,
     FlatList,
     TextInput,
+    ActivityIndicator,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { VoiceCoachService, VoiceSettings, AudioCue } from '../services/VoiceCoachService';
 import { AnalyticsService, ExportOptions } from '../services/AnalyticsService';
 import { ExerciseType } from '../types';
+import { Ionicons } from '@expo/vector-icons';
+import AuthService from '../services/AuthService';
+import axios from 'axios'; // For API calls to update profile
+import { Platform } from 'react-native';
 
 interface SettingsScreenProps {
     navigation: any;
     userId: string;
 }
 
-export default function SettingsScreen({ navigation, userId }: SettingsScreenProps): JSX.Element {
+const API_BASE_URL = Platform.OS === 'android' ? 'http://10.0.2.2:8000' : 'http://localhost:8000';
+
+export default function SettingsScreen({ navigation, userId }: SettingsScreenProps): React.JSX.Element {
     const [voiceSettings, setVoiceSettings] = useState<VoiceSettings>({
         isEnabled: false,
         volume: 0.8,
@@ -44,6 +50,8 @@ export default function SettingsScreen({ navigation, userId }: SettingsScreenPro
     const [showCueEditor, setShowCueEditor] = useState(false);
     const [selectedCue, setSelectedCue] = useState<AudioCue | null>(null);
     const [cues, setCues] = useState<AudioCue[]>([]);
+    const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     const voiceCoach = new VoiceCoachService();
     const analytics = new AnalyticsService();
@@ -51,6 +59,7 @@ export default function SettingsScreen({ navigation, userId }: SettingsScreenPro
     useEffect(() => {
         loadSettings();
         loadCues();
+        fetchUserData();
     }, []);
 
     const loadSettings = async () => {
@@ -90,6 +99,26 @@ export default function SettingsScreen({ navigation, userId }: SettingsScreenPro
         }
     };
 
+    const fetchUserData = async () => {
+        try {
+            const authHeader = await AuthService.getAuthHeader();
+            if (authHeader) {
+                // The /me endpoint is on /auth/me from our backend router
+                const response = await axios.get(`${API_BASE_URL}/auth/me`, { headers: authHeader });
+                setUser(response.data);
+            }
+        } catch (error) {
+            Alert.alert("Error", "Could not fetch user profile.");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleLogout = async () => {
+        await AuthService.logout();
+        navigation.replace('Login');
+    };
+
     const renderVoiceSettings = () => (
         <View style={styles.section}>
             <Text style={styles.sectionTitle}>Voice Coaching</Text>
@@ -108,44 +137,56 @@ export default function SettingsScreen({ navigation, userId }: SettingsScreenPro
                 <>
                     <View style={styles.sliderContainer}>
                         <Text style={styles.settingLabel}>Volume: {Math.round(voiceSettings.volume * 100)}%</Text>
-                        <Slider
-                            style={styles.slider}
-                            minimumValue={0}
-                            maximumValue={1}
-                            value={voiceSettings.volume}
-                            onValueChange={(value) => updateVoiceSettings({ volume: value })}
-                            minimumTrackTintColor="#4CAF50"
-                            maximumTrackTintColor="#E5E5E5"
-                            thumbStyle={{ backgroundColor: '#4CAF50' }}
-                        />
+                        <View style={styles.buttonRow}>
+                            <TouchableOpacity
+                                style={styles.adjustButton}
+                                onPress={() => updateVoiceSettings({ volume: Math.max(0, voiceSettings.volume - 0.1) })}
+                            >
+                                <Text style={styles.adjustButtonText}>-</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.adjustButton}
+                                onPress={() => updateVoiceSettings({ volume: Math.min(1, voiceSettings.volume + 0.1) })}
+                            >
+                                <Text style={styles.adjustButtonText}>+</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
 
                     <View style={styles.sliderContainer}>
                         <Text style={styles.settingLabel}>Speech Rate: {voiceSettings.rate.toFixed(1)}x</Text>
-                        <Slider
-                            style={styles.slider}
-                            minimumValue={0.5}
-                            maximumValue={2.0}
-                            value={voiceSettings.rate}
-                            onValueChange={(value) => updateVoiceSettings({ rate: value })}
-                            minimumTrackTintColor="#4CAF50"
-                            maximumTrackTintColor="#E5E5E5"
-                            thumbStyle={{ backgroundColor: '#4CAF50' }}
-                        />
+                        <View style={styles.buttonRow}>
+                            <TouchableOpacity
+                                style={styles.adjustButton}
+                                onPress={() => updateVoiceSettings({ rate: Math.max(0.5, voiceSettings.rate - 0.1) })}
+                            >
+                                <Text style={styles.adjustButtonText}>-</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.adjustButton}
+                                onPress={() => updateVoiceSettings({ rate: Math.min(2.0, voiceSettings.rate + 0.1) })}
+                            >
+                                <Text style={styles.adjustButtonText}>+</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
 
                     <View style={styles.sliderContainer}>
                         <Text style={styles.settingLabel}>Pitch: {voiceSettings.pitch.toFixed(1)}</Text>
-                        <Slider
-                            style={styles.slider}
-                            minimumValue={0.5}
-                            maximumValue={2.0}
-                            value={voiceSettings.pitch}
-                            onValueChange={(value) => updateVoiceSettings({ pitch: value })}
-                            minimumTrackTintColor="#4CAF50"
-                            maximumTrackTintColor="#E5E5E5"
-                            thumbStyle={{ backgroundColor: '#4CAF50' }}
-                        />
+                        <View style={styles.buttonRow}>
+                            <TouchableOpacity
+                                style={styles.adjustButton}
+                                onPress={() => updateVoiceSettings({ pitch: Math.max(0.5, voiceSettings.pitch - 0.1) })}
+                            >
+                                <Text style={styles.adjustButtonText}>-</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.adjustButton}
+                                onPress={() => updateVoiceSettings({ pitch: Math.min(2.0, voiceSettings.pitch + 0.1) })}
+                            >
+                                <Text style={styles.adjustButtonText}>+</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
 
                     <View style={styles.settingRow}>
@@ -339,10 +380,24 @@ export default function SettingsScreen({ navigation, userId }: SettingsScreenPro
         </Modal>
     );
 
+    if (isLoading) {
+        return <ActivityIndicator size="large" style={{ flex: 1, justifyContent: 'center' }} />;
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
                 <Text style={styles.title}>Settings</Text>
+
+                {user && (
+                    <View style={styles.profileSection}>
+                        <View style={styles.avatar}>
+                            <Text style={styles.avatarText}>{user.first_name?.[0]}{user.last_name?.[0]}</Text>
+                        </View>
+                        <Text style={styles.profileName}>{user.first_name} {user.last_name}</Text>
+                        <Text style={styles.profileEmail}>{user.email}</Text>
+                    </View>
+                )}
 
                 {renderVoiceSettings()}
                 {renderDataSettings()}
@@ -359,6 +414,10 @@ export default function SettingsScreen({ navigation, userId }: SettingsScreenPro
 
             {renderVoiceModal()}
             {renderExportModal()}
+
+            <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
+                <Text style={styles.logoutButtonText}>Log Out</Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 }
@@ -549,5 +608,30 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#666666',
         lineHeight: 20,
+    },
+    profileSection: { alignItems: 'center', paddingVertical: 30 },
+    avatar: { width: 100, height: 100, borderRadius: 50, backgroundColor: '#1e90ff', justifyContent: 'center', alignItems: 'center', marginBottom: 15 },
+    avatarText: { color: '#fff', fontSize: 40, fontWeight: 'bold' },
+    profileName: { fontSize: 24, fontWeight: 'bold', color: '#fff' },
+    profileEmail: { fontSize: 16, color: '#888', marginTop: 5 },
+    logoutButton: { margin: 20, padding: 15, backgroundColor: '#1c1c1e', borderRadius: 10, alignItems: 'center' },
+    logoutButtonText: { color: '#ff453a', fontSize: 17, fontWeight: 'bold' },
+    buttonRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
+    },
+    adjustButton: {
+        backgroundColor: '#4CAF50',
+        width: 50,
+        height: 40,
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    adjustButtonText: {
+        color: '#FFFFFF',
+        fontSize: 20,
+        fontWeight: 'bold',
     },
 }); 

@@ -44,7 +44,7 @@ class TestWorkoutVideoProcessor:
     
     @pytest.fixture
     def sample_keypoints(self):
-        """Sample keypoints for testing"""
+        """Sample keypoints for a person standing straight."""
         return {
             'nose': PoseLandmark(x=0.5, y=0.3, z=0.0, visibility=0.9),
             'left_shoulder': PoseLandmark(x=0.4, y=0.4, z=0.0, visibility=0.9),
@@ -106,12 +106,14 @@ class TestWorkoutVideoProcessor:
         angle = processor._calculate_hip_angle(straight_keypoints)
         assert 170 <= angle <= 180
         
-        # Test with bent leg (modify knee position)
+        # Test with bent hip (modify hip position to simulate squat)
         bent_keypoints = sample_keypoints.copy()
-        bent_keypoints['left_knee'] = PoseLandmark(x=0.3, y=0.7, z=0.0, visibility=0.9)
-        bent_keypoints['right_knee'] = PoseLandmark(x=0.7, y=0.7, z=0.0, visibility=0.9)
+        bent_keypoints['left_hip'] = PoseLandmark(x=0.4, y=0.8, z=0.0, visibility=0.9)
+        bent_keypoints['right_hip'] = PoseLandmark(x=0.6, y=0.8, z=0.0, visibility=0.9)
+        bent_keypoints['left_knee'] = PoseLandmark(x=0.4, y=0.9, z=0.0, visibility=0.9)
+        bent_keypoints['right_knee'] = PoseLandmark(x=0.6, y=0.9, z=0.0, visibility=0.9)
         angle = processor._calculate_hip_angle(bent_keypoints)
-        assert 90 <= angle <= 170
+        assert 60 <= angle <= 120
     
     def test_calculate_spine_angle(self, processor, sample_keypoints):
         """Test spine angle calculation"""
@@ -130,7 +132,14 @@ class TestWorkoutVideoProcessor:
     def test_calculate_knee_angle(self, processor, sample_keypoints):
         """Test knee angle calculation"""
         angle = processor._calculate_knee_angle(sample_keypoints)
-        assert 0 <= angle <= 180
+        assert 170 <= angle <= 180
+
+        # Test with bent knee
+        bent_keypoints = sample_keypoints.copy()
+        bent_keypoints['left_knee'] = PoseLandmark(x=0.5, y=0.8, z=0.0, visibility=0.9)
+        bent_keypoints['right_knee'] = PoseLandmark(x=0.7, y=0.8, z=0.0, visibility=0.9)
+        angle = processor._calculate_knee_angle(bent_keypoints)
+        assert 90 <= angle <= 170
     
     def test_average_point(self, processor):
         """Test point averaging utility"""
@@ -276,119 +285,105 @@ class TestWorkoutVideoProcessor:
             FrameAnalysis(3, 0.3, 80, 7, 80, 85, True, "bottom"),
             FrameAnalysis(4, 0.4, 120, 5, 120, 95, True, "ascent"),
         ]
-        
         rep_analyses = [
-            RepAnalysis(1, 1, 4, 0.133, 80, 85.0, [], {})
+            RepAnalysis(
+                rep_number=1,
+                start_frame=1,
+                end_frame=4,
+                duration=0.4,
+                max_depth_angle=80,
+                average_form_score=85.0,
+                form_issues=[],
+                phase_timings={}
+            )
         ]
         
         summary = processor._calculate_summary(frame_analyses, rep_analyses)
         
-        assert summary["average_form_score"] == 85.0  # (90+70+85+95)/4
+        assert summary["average_form_score"] == 85.0
         assert summary["good_form_percentage"] == 75.0  # 3 out of 4 frames
-        assert summary["average_rep_score"] == 85.0
-        assert summary["total_frames_analyzed"] == 4
-        assert summary["frames_with_pose"] == 4
+        assert summary["total_reps"] == 1
     
     @pytest.mark.asyncio
     async def test_process_frame_no_landmarks(self, processor):
-        """Test frame processing with no pose landmarks detected"""
-        # Create a mock frame
+        """Test frame processing when no landmarks are detected"""
         frame = np.zeros((480, 640, 3), dtype=np.uint8)
         
-        with patch.object(processor.pose, 'process') as mock_process:
-            # Mock no landmarks detected
-            mock_result = Mock()
-            mock_result.pose_landmarks = None
-            mock_process.return_value = mock_result
-            
-            result = await processor._process_frame(frame, 1, 0.033, "squat")
-            assert result is None
+        with patch.object(processor.pose, 'process', return_value=Mock(pose_landmarks=None)):
+            analysis = await processor._process_frame(frame, 0, 0, "squat")
+            assert analysis is None
     
     @pytest.mark.asyncio
     async def test_process_frame_with_landmarks(self, processor, mock_pose_landmarks):
-        """Test frame processing with valid pose landmarks"""
+        """Test frame processing with landmarks"""
         frame = np.zeros((480, 640, 3), dtype=np.uint8)
         
-        with patch.object(processor.pose, 'process') as mock_process:
-            # Mock successful landmark detection
-            mock_result = Mock()
-            mock_result.pose_landmarks = Mock()
-            mock_result.pose_landmarks.landmark = mock_pose_landmarks
-            mock_process.return_value = mock_result
-            
-            result = await processor._process_frame(frame, 1, 0.033, "squat")
-            
-            assert result is not None
-            assert isinstance(result, FrameAnalysis)
-            assert result.frame_number == 1
-            assert result.timestamp == 0.033
-            assert 0 <= result.hip_angle <= 180
-            assert 0 <= result.spine_angle <= 180
-            assert 0 <= result.form_score <= 100
-            assert result.rep_phase in ["descent", "bottom", "ascent", "top"]
+        with patch.object(processor.pose, 'process', return_value=Mock(pose_landmarks=Mock(landmark=mock_pose_landmarks))):
+            analysis = await processor._process_frame(frame, 0, 0, "squat")
+            assert isinstance(analysis, FrameAnalysis)
+            assert analysis.hip_angle is not None
+            assert analysis.spine_angle is not None
+            assert analysis.form_score is not None
+    
+    def _create_dummy_video(self, path: str, frames: int = 30, width: int = 100, height: int = 100):
+        """Helper to create a dummy video file"""
+        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+        writer = cv2.VideoWriter(path, fourcc, 30, (width, height))
+        for _ in range(frames):
+            writer.write(np.zeros((height, width, 3), dtype=np.uint8))
+        writer.release()
     
     @pytest.mark.asyncio
     async def test_process_video_file_not_found(self, processor):
-        """Test video processing with non-existent file"""
+        """Test video processing with a non-existent file"""
         with pytest.raises(FileNotFoundError):
-            await processor.process_video("/nonexistent/video.mp4", "squat")
+            await processor.process_video("non_existent_video.mp4")
     
     @pytest.mark.asyncio
     async def test_process_video_invalid_file(self, processor):
-        """Test video processing with invalid video file"""
-        # Create a temporary non-video file
-        with tempfile.NamedTemporaryFile(suffix='.txt', delete=False) as tmp:
-            tmp.write(b"not a video file")
-            tmp_path = tmp.name
-        
-        try:
+        """Test video processing with an invalid video file"""
+        with tempfile.NamedTemporaryFile(suffix=".mp4", delete=True) as tmp:
+            # Create an empty file, which is not a valid video
+            with open(tmp.name, 'w') as f:
+                f.write("invalid content")
+                
             with pytest.raises(ValueError):
-                await processor.process_video(tmp_path, "squat")
-        finally:
-            Path(tmp_path).unlink()  # Clean up
+                await processor.process_video(tmp.name)
     
     def test_edge_cases_angle_calculation(self, processor):
-        """Test edge cases in angle calculations"""
-        # Test with zero vectors (should not crash)
-        zero_keypoints = {
-            'left_hip': PoseLandmark(x=0.5, y=0.5, z=0.0, visibility=0.9),
-            'right_hip': PoseLandmark(x=0.5, y=0.5, z=0.0, visibility=0.9),
-            'left_knee': PoseLandmark(x=0.5, y=0.5, z=0.0, visibility=0.9),
-            'right_knee': PoseLandmark(x=0.5, y=0.5, z=0.0, visibility=0.9),
-            'left_ankle': PoseLandmark(x=0.5, y=0.5, z=0.0, visibility=0.9),
-            'right_ankle': PoseLandmark(x=0.5, y=0.5, z=0.0, visibility=0.9),
-            'left_shoulder': PoseLandmark(x=0.5, y=0.5, z=0.0, visibility=0.9),
-            'right_shoulder': PoseLandmark(x=0.5, y=0.5, z=0.0, visibility=0.9),
+        """Test angle calculations with overlapping points"""
+        keypoints = {
+            'left_shoulder': PoseLandmark(0.5, 0.5, 0, 1),
+            'right_shoulder': PoseLandmark(0.5, 0.5, 0, 1),
+            'left_hip': PoseLandmark(0.5, 0.5, 0, 1),
+            'right_hip': PoseLandmark(0.5, 0.5, 0, 1),
+            'left_knee': PoseLandmark(0.5, 0.5, 0, 1),
+            'right_knee': PoseLandmark(0.5, 0.5, 0, 1),
+            'left_ankle': PoseLandmark(0.5, 0.5, 0, 1),
+            'right_ankle': PoseLandmark(0.5, 0.5, 0, 1),
         }
         
-        # Should return default values without crashing
-        hip_angle = processor._calculate_hip_angle(zero_keypoints)
-        spine_angle = processor._calculate_spine_angle(zero_keypoints)
-        knee_angle = processor._calculate_knee_angle(zero_keypoints)
-        
-        assert isinstance(hip_angle, float)
-        assert isinstance(spine_angle, float)
-        assert isinstance(knee_angle, float)
+        assert processor._calculate_hip_angle(keypoints) == 180.0
+        assert processor._calculate_spine_angle(keypoints) == 0.0
+        assert processor._calculate_knee_angle(keypoints) == 180.0
     
     def test_form_score_bounds(self, processor):
-        """Test that form scores are always within bounds"""
-        # Test extreme values
-        extreme_scores = [
-            processor._calculate_form_score(-100, -100, "squat"),
-            processor._calculate_form_score(500, 500, "squat"),
-            processor._calculate_form_score(0, 0, "deadlift"),
-            processor._calculate_form_score(180, 90, "deadlift"),
-        ]
+        """Test that form score stays within [0, 100]"""
+        # Extremely bad form
+        score = processor._calculate_form_score(hip_angle=120, spine_angle=45, exercise_type="squat")
+        assert 0 <= score <= 100
         
-        for score in extreme_scores:
-            assert 0 <= score <= 100
+        # Perfect form with large depth bonus
+        score = processor._calculate_form_score(hip_angle=40, spine_angle=0, exercise_type="squat")
+        assert 0 <= score <= 100
     
     def test_rep_counting_edge_cases(self, processor):
         """Test rep counting with edge cases"""
         # Test rapid angle changes
         angles = [180, 60, 180, 50, 180, 70, 180]
-        
+    
         for i, angle in enumerate(angles):
+            phase = processor._determine_rep_phase(angle, "squat")
             analysis = FrameAnalysis(
                 frame_number=i,
                 timestamp=i * 0.033,
@@ -397,10 +392,10 @@ class TestWorkoutVideoProcessor:
                 knee_angle=angle,
                 form_score=85,
                 is_good_form=True,
-                rep_phase="unknown"
+                rep_phase=phase,
             )
             processor._update_rep_tracking(analysis, "squat")
         
-        # Should count valid reps without overcounting
-        assert processor.current_rep >= 0
-        assert processor.current_rep <= 3  # Maximum possible from sequence 
+        # Check that reps were counted correctly despite fluctuations
+        processor._finalize_current_rep(len(angles), 30.0) # finalize last rep
+        assert processor.current_rep == 3

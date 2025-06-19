@@ -1,0 +1,512 @@
+t=2025-06-18T23:07:34-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-18T23:07:34-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-18T23:07:34-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-18T23:07:34-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-18T23:07:34-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2025-06-18T23:07:35-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-18T23:07:35-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-18T23:07:35-0400 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:8000 url=https://3d18-108-5-4-98.ngrok-free.app
+t=2025-06-18T23:07:39-0400 lvl=info msg=start pg=/api/tunnels id=24944c5e5bf7cdae
+t=2025-06-18T23:07:39-0400 lvl=info msg=end pg=/api/tunnels id=24944c5e5bf7cdae status=200 dur=281.375µs
+t=2025-06-18T23:09:17-0400 lvl=info msg="received stop request" obj=app stopReq="{err:<nil> restart:false}"
+t=2025-06-18T23:09:17-0400 lvl=info msg="session closing" obj=tunnels.session err=nil
+t=2025-06-18T23:09:17-0400 lvl=info msg="accept failed" obj=tunnels.session obj=csess id=d62f8eb83e73 err="reconnecting session closed"
+t=2025-06-18T23:09:17-0400 lvl=info msg="no more state changes" obj=tunnels.session
+t=2025-06-19T00:05:40-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T00:05:40-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:05:40-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:05:40-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T00:05:40-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2025-06-19T00:05:40-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T00:05:40-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T00:05:41-0400 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:8000 url=https://09ac-108-5-4-98.ngrok-free.app
+t=2025-06-19T00:05:43-0400 lvl=info msg=start pg=/api/tunnels id=81e70b94bd45d70c
+t=2025-06-19T00:05:43-0400 lvl=info msg=end pg=/api/tunnels id=81e70b94bd45d70c status=200 dur=328.5µs
+t=2025-06-19T00:09:52-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T00:09:52-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:09:52-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:09:52-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T00:09:52-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T00:09:52-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4041 allow_hosts=[]
+t=2025-06-19T00:09:52-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:09:52-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:09:52-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x14000057ec0}} restart:false}"
+t=2025-06-19T00:09:52-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:09:52-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+t=2025-06-19T00:09:52-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T00:09:55-0400 lvl=info msg=start pg=/api/tunnels id=923eb76fbd78a6e3
+t=2025-06-19T00:09:55-0400 lvl=info msg=end pg=/api/tunnels id=923eb76fbd78a6e3 status=200 dur=241.291µs
+t=2025-06-19T00:13:26-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T00:13:26-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:13:26-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:13:26-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T00:13:26-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T00:13:26-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4041 allow_hosts=[]
+t=2025-06-19T00:13:27-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T00:13:27-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T00:13:27-0400 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:8000 url=https://10df-108-5-4-98.ngrok-free.app
+t=2025-06-19T00:13:29-0400 lvl=info msg=start pg=/api/tunnels id=20f82cd5adfd18e1
+t=2025-06-19T00:13:29-0400 lvl=info msg=end pg=/api/tunnels id=20f82cd5adfd18e1 status=200 dur=279.625µs
+t=2025-06-19T00:17:04-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T00:17:04-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:17:04-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:17:04-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T00:17:04-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T00:17:04-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4042 allow_hosts=[]
+t=2025-06-19T00:17:04-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:17:04-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:17:04-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x1400020f5f0}} restart:false}"
+t=2025-06-19T00:17:04-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:17:04-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+t=2025-06-19T00:17:04-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T00:17:07-0400 lvl=info msg=start pg=/api/tunnels id=cfc24a8e72180e4f
+t=2025-06-19T00:17:07-0400 lvl=info msg=end pg=/api/tunnels id=cfc24a8e72180e4f status=200 dur=423.167µs
+t=2025-06-19T00:18:06-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T00:18:06-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:18:06-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:18:06-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T00:18:06-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T00:18:06-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4042 allow_hosts=[]
+t=2025-06-19T00:18:07-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:18:07-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:18:07-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x14000186760}} restart:false}"
+t=2025-06-19T00:18:07-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:18:07-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+t=2025-06-19T00:18:07-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T00:18:09-0400 lvl=info msg=start pg=/api/tunnels id=cb8f567c417d5353
+t=2025-06-19T00:18:09-0400 lvl=info msg=end pg=/api/tunnels id=cb8f567c417d5353 status=200 dur=416.167µs
+t=2025-06-19T00:19:18-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T00:19:18-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:19:18-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:19:18-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T00:19:18-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T00:19:18-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4042 allow_hosts=[]
+t=2025-06-19T00:19:19-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:19:19-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:19:19-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x140005a0090}} restart:false}"
+t=2025-06-19T00:19:19-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:19:19-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+t=2025-06-19T00:19:19-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T00:19:21-0400 lvl=info msg=start pg=/api/tunnels id=1bf2e443c37c7a35
+t=2025-06-19T00:19:21-0400 lvl=info msg=end pg=/api/tunnels id=1bf2e443c37c7a35 status=200 dur=489.334µs
+t=2025-06-19T00:21:13-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T00:21:13-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:21:13-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:21:13-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T00:21:13-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T00:21:13-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4042 allow_hosts=[]
+t=2025-06-19T00:21:14-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:21:14-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:21:14-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x14000187be0}} restart:false}"
+t=2025-06-19T00:21:14-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:21:14-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+t=2025-06-19T00:21:14-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T00:21:16-0400 lvl=info msg=start pg=/api/tunnels id=c115be5f571c580d
+t=2025-06-19T00:21:16-0400 lvl=info msg=end pg=/api/tunnels id=c115be5f571c580d status=200 dur=497.916µs
+t=2025-06-19T00:23:17-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T00:23:17-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:23:17-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:23:17-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T00:23:17-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T00:23:17-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4042 allow_hosts=[]
+t=2025-06-19T00:23:17-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:23:17-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:23:17-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x140007a4920}} restart:false}"
+t=2025-06-19T00:23:17-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:23:17-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+t=2025-06-19T00:23:17-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T00:23:20-0400 lvl=info msg=start pg=/api/tunnels id=d4a3e2ab7d851671
+t=2025-06-19T00:23:20-0400 lvl=info msg=end pg=/api/tunnels id=d4a3e2ab7d851671 status=200 dur=287.208µs
+t=2025-06-19T00:24:24-0400 lvl=info msg="join connections" obj=join id=4ef91d3f5162 l=[::1]:8000 r=108.5.4.98:28902
+t=2025-06-19T00:27:46-0400 lvl=info msg="join connections" obj=join id=65db25a960d3 l=[::1]:8000 r=108.5.4.98:17190
+t=2025-06-19T00:28:18-0400 lvl=info msg="join connections" obj=join id=0058c81d4604 l=[::1]:8000 r=108.5.4.98:17190
+t=2025-06-19T00:28:29-0400 lvl=info msg="join connections" obj=join id=776272ea036b l=[::1]:8000 r=108.5.4.98:17190
+t=2025-06-19T00:32:41-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T00:32:41-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:32:41-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:32:41-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T00:32:41-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T00:32:41-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4042 allow_hosts=[]
+t=2025-06-19T00:32:41-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:32:41-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:32:41-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x14000650260}} restart:false}"
+t=2025-06-19T00:32:41-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:32:41-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+t=2025-06-19T00:32:41-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T00:32:44-0400 lvl=info msg=start pg=/api/tunnels id=3dc2ceda253257e6
+t=2025-06-19T00:32:44-0400 lvl=info msg=end pg=/api/tunnels id=3dc2ceda253257e6 status=200 dur=426.333µs
+t=2025-06-19T00:33:00-0400 lvl=info msg="join connections" obj=join id=ee5f9b749879 l=[::1]:8000 r=108.5.4.98:16623
+t=2025-06-19T00:33:02-0400 lvl=info msg="join connections" obj=join id=3e3ad198eaec l=[::1]:8000 r=108.5.4.98:16623
+t=2025-06-19T00:33:49-0400 lvl=info msg="join connections" obj=join id=a3b5af349dda l=[::1]:8000 r=108.5.4.98:30556
+t=2025-06-19T00:34:42-0400 lvl=info msg="join connections" obj=join id=84db2a6ccb6a l=[::1]:8000 r=108.5.4.98:37048
+t=2025-06-19T00:56:07-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T00:56:07-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:56:07-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T00:56:07-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T00:56:07-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T00:56:07-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4042 allow_hosts=[]
+t=2025-06-19T00:56:10-0400 lvl=info msg=start pg=/api/tunnels id=46af0ee8a3c45dbd
+t=2025-06-19T00:56:10-0400 lvl=info msg=end pg=/api/tunnels id=46af0ee8a3c45dbd status=200 dur=358.416µs
+t=2025-06-19T00:56:12-0400 lvl=warn msg="failed to check for update" obj=updater err="Post \"https://update.equinox.io/check\": context deadline exceeded"
+t=2025-06-19T00:56:19-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to send authentication request: failed to fetch CRL. errors encountered: timed out fetching CRL"
+t=2025-06-19T00:56:23-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:56:23-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:56:23-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x1400079c400}} restart:false}"
+t=2025-06-19T00:56:23-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T00:56:23-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+t=2025-06-19T00:56:23-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T00:58:27-0400 lvl=info msg="join connections" obj=join id=2bd21ac3b54b l=[::1]:8000 r=108.5.4.98:34642
+t=2025-06-19T01:01:00-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T01:01:00-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:01:00-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:01:00-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T01:01:00-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T01:01:00-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4042 allow_hosts=[]
+t=2025-06-19T01:01:03-0400 lvl=info msg=start pg=/api/tunnels id=f673a0bc40324a5a
+t=2025-06-19T01:01:03-0400 lvl=info msg=end pg=/api/tunnels id=f673a0bc40324a5a status=200 dur=638.416µs
+t=2025-06-19T01:01:07-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:01:07-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:01:07-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x14000056d90}} restart:false}"
+t=2025-06-19T01:01:07-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:01:07-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+t=2025-06-19T01:01:07-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T01:02:19-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T01:02:19-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:02:19-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:02:19-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T01:02:19-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T01:02:19-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4042 allow_hosts=[]
+t=2025-06-19T01:02:21-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:02:21-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:02:21-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x1400080a230}} restart:false}"
+t=2025-06-19T01:02:21-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:02:21-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T01:02:21-0400 lvl=info msg="no more state changes" obj=tunnels.session
+t=2025-06-19T01:02:22-0400 lvl=info msg=start pg=/api/tunnels id=893a84f237401d00
+t=2025-06-19T01:02:22-0400 lvl=info msg=end pg=/api/tunnels id=893a84f237401d00 status=200 dur=791.083µs
+t=2025-06-19T01:04:00-0400 lvl=info msg="join connections" obj=join id=bfe4db933c38 l=[::1]:8000 r=108.5.4.98:28909
+t=2025-06-19T01:06:41-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T01:06:41-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:06:41-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:06:41-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T01:06:41-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T01:06:41-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4043 allow_hosts=[]
+t=2025-06-19T01:06:42-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:06:42-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:06:42-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x14000495370}} restart:false}"
+t=2025-06-19T01:06:42-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:06:42-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T01:06:42-0400 lvl=info msg="no more state changes" obj=tunnels.session
+t=2025-06-19T01:06:44-0400 lvl=info msg=start pg=/api/tunnels id=16e3887f924a0abc
+t=2025-06-19T01:06:44-0400 lvl=info msg=end pg=/api/tunnels id=16e3887f924a0abc status=200 dur=608.417µs
+t=2025-06-19T01:07:17-0400 lvl=info msg="received stop request" obj=app stopReq="{err:<nil> restart:false}"
+t=2025-06-19T01:07:17-0400 lvl=info msg="received stop request" obj=app stopReq="{err:<nil> restart:false}"
+t=2025-06-19T01:07:17-0400 lvl=info msg="session closing" obj=tunnels.session err=nil
+t=2025-06-19T01:07:17-0400 lvl=info msg="accept failed" obj=tunnels.session obj=csess id=f2e1cacf6de2 err="reconnecting session closed"
+t=2025-06-19T01:07:17-0400 lvl=info msg="session closing" obj=tunnels.session err=nil
+t=2025-06-19T01:07:46-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T01:07:46-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:07:46-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:07:46-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T01:07:46-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2025-06-19T01:07:47-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T01:07:47-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T01:07:47-0400 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:8000 url=https://32ee-108-5-4-98.ngrok-free.app
+t=2025-06-19T01:07:49-0400 lvl=info msg=start pg=/api/tunnels id=01afd6bd027dd538
+t=2025-06-19T01:07:49-0400 lvl=info msg=end pg=/api/tunnels id=01afd6bd027dd538 status=200 dur=851.791µs
+t=2025-06-19T01:10:23-0400 lvl=info msg="join connections" obj=join id=5de774aaa1c5 l=[::1]:8000 r=108.5.4.98:25410
+t=2025-06-19T01:14:37-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T01:14:37-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:14:37-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:14:37-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T01:14:37-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T01:14:37-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4041 allow_hosts=[]
+t=2025-06-19T01:14:37-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:14:37-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:14:37-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x14000186170}} restart:false}"
+t=2025-06-19T01:14:37-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:14:37-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:14:37-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T01:14:40-0400 lvl=info msg=start pg=/api/tunnels id=531df7c71dc6b269
+t=2025-06-19T01:14:40-0400 lvl=info msg=end pg=/api/tunnels id=531df7c71dc6b269 status=200 dur=579.875µs
+t=2025-06-19T01:17:16-0400 lvl=info msg="join connections" obj=join id=41c799f6b731 l=[::1]:8000 r=108.5.4.98:43719
+t=2025-06-19T01:19:51-0400 lvl=info msg="no configuration paths supplied"
+t=2025-06-19T01:19:51-0400 lvl=warn msg="ngrok config file found at legacy location, move to XDG location" xdg_path="/Users/ronikriger/Library/Application Support/ngrok/ngrok.yml" legacy_path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:19:51-0400 lvl=info msg="using configuration at default config path" path=/Users/ronikriger/.ngrok2/ngrok.yml
+t=2025-06-19T01:19:51-0400 lvl=info msg="open config file" path=/Users/ronikriger/.ngrok2/ngrok.yml err=nil
+t=2025-06-19T01:19:51-0400 lvl=warn msg="can't bind default web address, trying alternatives" obj=web addr=127.0.0.1:4040
+t=2025-06-19T01:19:51-0400 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4042 allow_hosts=[]
+t=2025-06-19T01:19:51-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:19:51-0400 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:19:51-0400 lvl=info msg="received stop request" obj=app stopReq="{err:{Remote:true Inner:{Inner:0x140006de2a0}} restart:false}"
+t=2025-06-19T01:19:51-0400 lvl=eror msg="terminating with error" obj=app err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:19:51-0400 lvl=crit msg="command failed" err="authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.\nYou can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.\nRead more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config\nYou can view your current agent sessions in the dashboard:\nhttps://dashboard.ngrok.com/agents\r\n\r\nERR_NGROK_108\r\n"
+t=2025-06-19T01:19:51-0400 lvl=info msg="no more state changes" obj=tunnels.session
+ERROR:  authentication failed: Your account is limited to 1 simultaneous ngrok agent sessions.
+ERROR:  You can run multiple simultaneous tunnels from a single agent session by defining the tunnels in your agent configuration file and starting them with the command `ngrok start --all`.
+ERROR:  Read more about the agent configuration file: https://ngrok.com/docs/secure-tunnels/ngrok-agent/reference/config
+ERROR:  You can view your current agent sessions in the dashboard:
+ERROR:  https://dashboard.ngrok.com/agents
+ERROR:  
+ERROR:  ERR_NGROK_108
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_108
+ERROR:  
+t=2025-06-19T01:19:54-0400 lvl=info msg=start pg=/api/tunnels id=ee8c80ba9ba0ceea
+t=2025-06-19T01:19:54-0400 lvl=info msg=end pg=/api/tunnels id=ee8c80ba9ba0ceea status=200 dur=908.208µs
+t=2025-06-19T01:20:33-0400 lvl=info msg="join connections" obj=join id=9e8488180b95 l=[::1]:8000 r=108.5.4.98:21368
+t=2025-06-19T01:21:23-0400 lvl=info msg="join connections" obj=join id=741da7347cdb l=[::1]:8000 r=108.5.4.98:37612
+t=2025-06-19T01:22:53-0400 lvl=info msg="join connections" obj=join id=7cefa392495a l=[::1]:8000 r=108.5.4.98:17527
+t=2025-06-19T01:22:59-0400 lvl=info msg="join connections" obj=join id=8b9f7146643b l=[::1]:8000 r=108.5.4.98:29373
+t=2025-06-19T01:23:09-0400 lvl=info msg="join connections" obj=join id=a2ea458a8ace l=[::1]:8000 r=108.5.4.98:14581
+t=2025-06-19T01:23:37-0400 lvl=info msg="join connections" obj=join id=a2d7ecac454e l=[::1]:8000 r=108.5.4.98:28405
+t=2025-06-19T01:23:47-0400 lvl=info msg="join connections" obj=join id=b0c55b70ac94 l=[::1]:8000 r=108.5.4.98:23384
+t=2025-06-19T01:23:49-0400 lvl=info msg="join connections" obj=join id=69777e4bb9d8 l=[::1]:8000 r=108.5.4.98:10103
+t=2025-06-19T01:46:24-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=35538f146bb4 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T01:46:24-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T01:46:25-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T01:46:25-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T02:04:02-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=c591a6323b80 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T02:04:02-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T02:04:04-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T02:04:04-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T02:21:24-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=684743a1a2f1 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T02:21:24-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T02:21:25-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T02:21:25-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T02:39:45-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=c21975a16164 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T02:39:45-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T02:39:46-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T02:39:46-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T03:11:06-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp 10.42.7.183:50473->3.136.132.147:443: read: operation timed out"
+t=2025-06-19T03:11:07-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T03:11:07-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T03:11:17-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=12a1e0fe2d0c clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T03:27:20-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=8813307ccce6 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T03:27:20-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T03:27:21-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T03:27:21-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T03:47:33-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp 10.42.7.183:50643->18.229.114.140:443: read: operation timed out"
+t=2025-06-19T03:47:33-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T03:47:33-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T03:47:41-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=9e8f751f3968 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T04:05:03-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=e5096adc2490 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T04:05:03-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T04:05:04-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T04:05:04-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T04:23:14-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=360758078e33 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T04:23:14-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T04:23:15-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T04:23:15-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T04:40:54-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=b93afef5f7c8 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T04:40:54-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T04:40:55-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T04:40:55-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T04:57:59-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=9b8bd2c50608 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T04:57:59-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T04:58:01-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T04:58:01-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T05:14:39-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=43dca88248a5 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T05:14:39-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T05:14:40-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T05:14:40-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T05:48:24-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp 10.42.7.183:51136->18.229.186.234:443: read: operation timed out"
+t=2025-06-19T05:48:24-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T05:48:24-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T05:48:36-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=ba4b7c11d057 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T06:06:13-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=9467b4800a27 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T06:06:13-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T06:06:14-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T06:06:14-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T06:22:31-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=81476022f751 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T06:22:31-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T06:22:32-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T06:22:32-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T06:41:14-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=2d02dc795cb1 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T06:41:14-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T06:41:15-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T06:41:15-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T06:57:51-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=4f13e23efb68 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T06:57:51-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T06:57:51-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T06:57:51-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T07:14:35-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=b3cb3dfe397a clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T07:14:35-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T07:14:36-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T07:14:36-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T07:41:30-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp 10.42.7.183:51585->18.229.94.125:443: read: operation timed out"
+t=2025-06-19T07:41:31-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T07:41:31-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T07:41:40-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=46d3f1d80827 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T07:59:00-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=7c896334cdac clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T07:59:00-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T07:59:00-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T07:59:00-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T08:18:16-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=02c6b7556fb3 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T08:18:16-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T08:18:17-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T08:18:17-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T08:35:17-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=b8b97c11c629 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T08:35:17-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T08:35:17-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T08:35:17-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T08:38:45-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=fd1fd18fcbd4 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T08:38:45-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="session closed"
+t=2025-06-19T08:38:46-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T08:38:46-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T09:05:58-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp 10.42.7.183:51959->18.228.107.150:443: read: can't assign requested address"
+t=2025-06-19T09:05:58-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.ngrok-agent.com:443\": dial tcp: lookup connect.ngrok-agent.com: no such host"
+t=2025-06-19T09:05:59-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.ngrok-agent.com:443\": dial tcp: lookup connect.ngrok-agent.com: no such host"
+t=2025-06-19T09:06:45-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.ngrok-agent.com:443\": dial tcp: lookup connect.ngrok-agent.com: no such host"
+t=2025-06-19T09:06:47-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=615633f7b23e clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T09:06:47-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.ngrok-agent.com:443\": dial tcp: lookup connect.ngrok-agent.com: no such host"
+t=2025-06-19T09:06:52-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T09:06:52-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T09:08:52-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp [2601:84:301:7a70:d10a:455b:6a34:877a]:52019->[2600:1f16:d83:1201::6e74:1]:443: read: connection reset by peer"
+t=2025-06-19T09:08:52-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T09:08:52-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T09:09:06-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=7e8554dce20f clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T09:10:28-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp [2601:84:301:7a70:d10a:455b:6a34:877a]:52070->[2600:1f16:d83:1202::6e74:2]:443: read: connection reset by peer"
+t=2025-06-19T09:10:29-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T09:10:29-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T09:10:43-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=6965f0aa23b5 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T09:24:54-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp [2601:84:301:7a70:d10a:455b:6a34:877a]:52182->[2600:1f16:d83:1202::6e74:5]:443: read: connection reset by peer"
+t=2025-06-19T09:24:54-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T09:24:54-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T09:25:09-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=dd46356b847a clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T09:34:26-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp [2601:84:301:7a70:d10a:455b:6a34:877a]:52307->[2600:1f16:d83:1200::6e74:0]:443: read: connection reset by peer"
+t=2025-06-19T09:34:27-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T09:34:27-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T09:34:41-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=44311db29440 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T10:34:53-0400 lvl=info msg="join connections" obj=join id=1153eca551d0 l=[::1]:8000 r=[2601:84:301:7a70:902b:4bcf:8e78:3c47]:52646
+t=2025-06-19T10:36:45-0400 lvl=warn msg="failed to open private leg" id=023c75de7564 privaddr=localhost:8000 err="dial tcp [::1]:8000: connect: connection refused"
+t=2025-06-19T10:41:43-0400 lvl=info msg="join connections" obj=join id=6c227c7774ac l=127.0.0.1:8000 r=[2601:84:301:7a70:902b:4bcf:8e78:3c47]:52661
+t=2025-06-19T10:53:38-0400 lvl=info msg="join connections" obj=join id=fcb26916ad22 l=127.0.0.1:8000 r=[2601:84:301:7a70:902b:4bcf:8e78:3c47]:52736
+t=2025-06-19T10:55:55-0400 lvl=info msg="join connections" obj=join id=805e4892885b l=127.0.0.1:8000 r=[2601:84:301:7a70:902b:4bcf:8e78:3c47]:52760
+t=2025-06-19T10:57:11-0400 lvl=info msg="join connections" obj=join id=d381f6114e77 l=127.0.0.1:8000 r=[2601:84:301:7a70:902b:4bcf:8e78:3c47]:52767
+t=2025-06-19T10:59:04-0400 lvl=info msg="join connections" obj=join id=ea4d89cb2e0d l=127.0.0.1:8000 r=[2601:84:301:7a70:902b:4bcf:8e78:3c47]:52773
+t=2025-06-19T11:02:30-0400 lvl=info msg="join connections" obj=join id=0f702f00b876 l=127.0.0.1:8000 r=[2601:84:301:7a70:902b:4bcf:8e78:3c47]:52784
+t=2025-06-19T12:06:01-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp [2601:84:301:7a70:d10a:455b:6a34:877a]:52431->[2600:1f16:d83:1200::6e74:3]:443: read: connection reset by peer"
+t=2025-06-19T12:06:02-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T12:06:02-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T12:06:15-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=d7725272b2cc clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T12:39:54-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp [2601:84:301:7a70:d10a:455b:6a34:877a]:49322->[2600:1f16:d83:1201::6e74:4]:443: read: connection reset by peer"
+t=2025-06-19T12:55:01-0400 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="session closed"
+t=2025-06-19T12:55:02-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T12:55:02-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T12:55:06-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=3484c32b51f3 clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T13:02:34-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp [2601:84:301:7a70:d10a:455b:6a34:877a]:50607->[2600:1f16:d83:1200::6e74:3]:443: read: connection reset by peer"
+t=2025-06-19T13:02:34-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T13:02:34-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T13:02:49-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=cf22b647dccf clientid=2b85ddfdb0788bf42a76b3edeafa61f7
+t=2025-06-19T14:03:05-0400 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=b5b4c5f12e9b err="read tcp [2601:84:301:7a70:d10a:455b:6a34:877a]:50703->[2600:1f16:d83:1201::6e74:1]:443: read: connection reset by peer"
+t=2025-06-19T14:03:05-0400 lvl=info msg="client session established" obj=tunnels.session
+t=2025-06-19T14:03:05-0400 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2025-06-19T14:03:20-0400 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=ccb377e0e87a clientid=2b85ddfdb0788bf42a76b3edeafa61f7

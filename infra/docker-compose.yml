@@ -1,31 +1,27 @@
-version: '3.8'
-
 services:
   # PostgreSQL Database
   postgres:
-    image: postgres:15-alpine
+    image: postgres:15
     container_name: repright-postgres
-    environment:
-      POSTGRES_DB: repright
-      POSTGRES_USER: repright_user
-      POSTGRES_PASSWORD: repright_password
-      POSTGRES_HOST_AUTH_METHOD: trust
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_USER: repright_user
+      POSTGRES_PASSWORD: repright_password
+      POSTGRES_DB: repright_db
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - postgres_data:/var/lib/postgresql/data/
     networks:
       - repright-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U repright_user -d repright"]
+      test: ["CMD-SHELL", "pg_isready -U repright_user -d repright_db"]
       interval: 10s
       timeout: 5s
       retries: 5
 
   # Redis for Celery task queue
   redis:
-    image: redis:7-alpine
+    image: redis:6.2-alpine
     container_name: repright-redis
     ports:
       - "6379:6379"
@@ -38,36 +34,31 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    command: redis-server --appendonly yes
 
   # FastAPI Backend
   backend:
+    image: repright-backend
+    container_name: repright-backend
     build:
       context: ../backend
       dockerfile: Dockerfile
-    container_name: repright-backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: postgresql://repright_user:repright_password@postgres:5432/repright
-      REDIS_URL: redis://redis:6379/0
-      SECRET_KEY: your-secret-key-change-in-production
-      ALGORITHM: HS256
-      ACCESS_TOKEN_EXPIRE_MINUTES: 30
-      REFRESH_TOKEN_EXPIRE_DAYS: 7
-      ENVIRONMENT: development
-      CELERY_BROKER_URL: redis://redis:6379/0
-      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      - DATABASE_URL=postgresql://repright_user:repright_password@postgres/repright_db
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - PYTHONPATH=/app
     volumes:
       - ../backend:/app
-      - video_uploads:/app/uploads
     networks:
       - repright-network
     depends_on:
       postgres:
         condition: service_healthy
       redis:
-        condition: service_healthy
+        condition: service_started
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
@@ -81,24 +72,15 @@ services:
       context: ../backend
       dockerfile: Dockerfile
     container_name: repright-celery-worker
-    command: celery -A app.core.celery worker --loglevel=info --concurrency=2
+    command: /usr/local/bin/celery -A app.core.celery:celery_app worker --loglevel=info --concurrency=2
     environment:
       DATABASE_URL: postgresql://repright_user:repright_password@postgres:5432/repright
       REDIS_URL: redis://redis:6379/0
-      CELERY_BROKER_URL: redis://redis:6379/0
-      CELERY_RESULT_BACKEND: redis://redis:6379/0
-      SECRET_KEY: your-secret-key-change-in-production
-    volumes:
-      - ../backend:/app
-      - video_uploads:/app/uploads
-    networks:
-      - repright-network
     depends_on:
       postgres:
         condition: service_healthy
       redis:
         condition: service_healthy
-    restart: unless-stopped
 
   # Celery Beat for scheduled tasks
   celery-beat:
@@ -106,7 +88,7 @@ services:
       context: ../backend
       dockerfile: Dockerfile
     container_name: repright-celery-beat
-    command: celery -A app.core.celery beat --loglevel=info
+    command: /usr/local/bin/celery -A app.core.celery:celery_app beat --loglevel=info
     environment:
       DATABASE_URL: postgresql://repright_user:repright_password@postgres:5432/repright
       REDIS_URL: redis://redis:6379/0
@@ -130,16 +112,14 @@ services:
       context: ../backend
       dockerfile: Dockerfile
     container_name: repright-flower
-    command: celery -A app.core.celery flower --port=5555
+    command: /usr/local/bin/celery -A app.core.celery:celery_app flower --port=5555
     ports:
       - "5555:5555"
     environment:
-      CELERY_BROKER_URL: redis://redis:6379/0
-      CELERY_RESULT_BACKEND: redis://redis:6379/0
-    networks:
-      - repright-network
+      REDIS_URL: redis://redis:6379/0
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
     restart: unless-stopped
 
   # Nginx reverse proxy (optional for production)

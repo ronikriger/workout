@@ -13,6 +13,8 @@ import {
     Dimensions,
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons';
 
 interface GameCardProps {
     title: string;
@@ -38,7 +40,7 @@ export default function GameCard({
     animated = false,
     glowEffect = false,
     celebration = false
-}: GameCardProps): JSX.Element {
+}: GameCardProps): React.JSX.Element {
     const scaleAnimation = useRef(new Animated.Value(1)).current;
     const glowAnimation = useRef(new Animated.Value(0)).current;
     const pulseAnimation = useRef(new Animated.Value(1)).current;

@@ -263,22 +263,25 @@ class WorkoutVideoProcessor:
         return keypoints
     
     def _calculate_hip_angle(self, keypoints: Dict[str, PoseLandmark]) -> float:
-        """Calculate hip angle using hip, knee, and ankle landmarks"""
+        """Calculate hip angle using shoulder, hip, and knee landmarks"""
         try:
             # Use average of left and right side
+            shoulder = self._average_point(keypoints['left_shoulder'], keypoints['right_shoulder'])
             hip = self._average_point(keypoints['left_hip'], keypoints['right_hip'])
             knee = self._average_point(keypoints['left_knee'], keypoints['right_knee'])
-            ankle = self._average_point(keypoints['left_ankle'], keypoints['right_ankle'])
             
-            # Calculate vectors
-            thigh_vector = np.array([knee.x - hip.x, knee.y - hip.y])
-            shin_vector = np.array([ankle.x - knee.x, ankle.y - knee.y])
+            # Calculate vectors (y-axis is inverted in image coordinates)
+            torso_vector = np.array([shoulder.x - hip.x, hip.y - shoulder.y])
+            thigh_vector = np.array([knee.x - hip.x, hip.y - knee.y])
             
+            if np.linalg.norm(torso_vector) == 0 or np.linalg.norm(thigh_vector) == 0:
+                return 180.0
+
             # Calculate angle
             angle_rad = np.arccos(
                 np.clip(
-                    np.dot(thigh_vector, shin_vector) / 
-                    (np.linalg.norm(thigh_vector) * np.linalg.norm(shin_vector)),
+                    np.dot(torso_vector, thigh_vector) / 
+                    (np.linalg.norm(torso_vector) * np.linalg.norm(thigh_vector)),
                     -1.0, 1.0
                 )
             )
@@ -286,7 +289,7 @@ class WorkoutVideoProcessor:
             return np.degrees(angle_rad)
             
         except (ZeroDivisionError, ValueError):
-            return 180.0  # Default to straight leg
+            return 180.0  # Default to straight
     
     def _calculate_spine_angle(self, keypoints: Dict[str, PoseLandmark]) -> float:
         """Calculate spine angle from vertical"""
@@ -298,9 +301,12 @@ class WorkoutVideoProcessor:
             hip = self._average_point(keypoints['left_hip'], keypoints['right_hip'])
             
             # Vector from hip to shoulder
-            spine_vector = np.array([shoulder.x - hip.x, shoulder.y - hip.y])
-            vertical_vector = np.array([0, -1])  # Pointing up
+            spine_vector = np.array([shoulder.x - hip.x, hip.y - shoulder.y])
+            vertical_vector = np.array([0, 1])  # Pointing down
             
+            if np.linalg.norm(spine_vector) == 0:
+                return 0.0
+
             # Calculate angle from vertical
             angle_rad = np.arccos(
                 np.clip(
@@ -322,9 +328,12 @@ class WorkoutVideoProcessor:
             ankle = self._average_point(keypoints['left_ankle'], keypoints['right_ankle'])
             
             # Vectors
-            thigh_vector = np.array([hip.x - knee.x, hip.y - knee.y])
-            shin_vector = np.array([ankle.x - knee.x, ankle.y - knee.y])
+            thigh_vector = np.array([hip.x - knee.x, knee.y - hip.y])
+            shin_vector = np.array([ankle.x - knee.x, knee.y - ankle.y])
             
+            if np.linalg.norm(thigh_vector) == 0 or np.linalg.norm(shin_vector) == 0:
+                return 180.0
+
             # Angle
             angle_rad = np.arccos(
                 np.clip(
@@ -350,26 +359,28 @@ class WorkoutVideoProcessor:
     
     def _determine_rep_phase(self, hip_angle: float, exercise_type: str) -> str:
         """Determine current phase of the rep"""
+        phase = "unknown"
         if exercise_type == "squat":
             if hip_angle > 150:
-                return "top"
+                phase = "top"
             elif hip_angle < 90:
-                return "bottom"
+                phase = "bottom"
             elif hip_angle < self.last_hip_angle:
-                return "descent"
+                phase = "descent"
             else:
-                return "ascent"
+                phase = "ascent"
         else:  # deadlift
             if hip_angle > 160:
-                return "top"
+                phase = "top"
             elif hip_angle < 100:
-                return "bottom"
+                phase = "bottom"
             elif hip_angle < self.last_hip_angle:
-                return "descent"
+                phase = "descent"
             else:
-                return "ascent"
+                phase = "ascent"
         
         self.last_hip_angle = hip_angle
+        return phase
     
     def _calculate_form_score(
         self, hip_angle: float, spine_angle: float, exercise_type: str
@@ -378,13 +389,14 @@ class WorkoutVideoProcessor:
         score = 100
         
         # Penalize spine deviation from vertical (5 degrees tolerance)
+        is_good_spine = abs(spine_angle) <= 15
         spine_penalty = max(0, abs(spine_angle) - 5) * 2
         score -= min(spine_penalty, 40)
         
         # Exercise-specific scoring
         if exercise_type == "squat":
-            # Reward depth in bottom position
-            if hip_angle < 90:
+            # Reward depth in bottom position only if form is good
+            if hip_angle < 90 and is_good_spine:
                 depth_bonus = max(0, (90 - hip_angle) / 20 * 10)
                 score += min(depth_bonus, 10)
         
@@ -465,23 +477,20 @@ class WorkoutVideoProcessor:
         frames: List[FrameAnalysis], 
         reps: List[RepAnalysis]
     ) -> Dict[str, Any]:
-        """Calculate summary statistics"""
+        """Calculate summary statistics from all frames and reps"""
         if not frames:
-            return {"average_form_score": 0, "good_form_percentage": 0}
+            return {
+                "average_form_score": 0,
+                "good_form_percentage": 100,
+                "total_reps": len(reps)
+            }
         
-        total_form_score = sum(f.form_score for f in frames)
-        average_form_score = total_form_score / len(frames)
-        
-        good_form_frames = sum(1 for f in frames if f.is_good_form)
-        good_form_percentage = (good_form_frames / len(frames)) * 100
-        
-        rep_form_scores = [r.average_form_score for r in reps]
-        average_rep_score = sum(rep_form_scores) / len(rep_form_scores) if reps else 0
+        avg_form_score = sum(f.form_score for f in frames) / len(frames)
+        good_form_count = sum(1 for f in frames if f.is_good_form)
+        good_form_percentage = (good_form_count / len(frames)) * 100
         
         return {
-            "average_form_score": round(average_form_score, 1),
-            "good_form_percentage": round(good_form_percentage, 1),
-            "average_rep_score": round(average_rep_score, 1),
-            "total_frames_analyzed": len(frames),
-            "frames_with_pose": len(frames)
+            "average_form_score": avg_form_score,
+            "good_form_percentage": good_form_percentage,
+            "total_reps": len(reps)
         } 

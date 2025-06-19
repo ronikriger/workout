@@ -1,60 +1,49 @@
 export default {
-    expo: {
-        name: "RepRight",
-        slug: "repright-workout-analyzer",
-        version: "1.0.0",
-        orientation: "portrait",
-        icon: "./assets/icon.png",
-        userInterfaceStyle: "automatic",
-        splash: {
-            image: "./assets/splash.png",
-            resizeMode: "contain",
-            backgroundColor: "#1a1a1a"
+    "expo": {
+        "name": "RepRight",
+        "slug": "repright-mobile",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "userInterfaceStyle": "dark",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#000000"
         },
-        assetBundlePatterns: [
+        "assetBundlePatterns": [
             "**/*"
         ],
-        ios: {
-            supportsTablet: false,
-            bundleIdentifier: "com.repright.workoutanalyzer",
-            infoPlist: {
-                NSCameraUsageDescription: "RepRight needs camera access to analyze your workout form in real-time.",
-                NSMicrophoneUsageDescription: "RepRight uses microphone for video recording during workouts."
-            }
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.repright.mobile"
         },
-        android: {
-            adaptiveIcon: {
-                foregroundImage: "./assets/adaptive-icon.png",
-                backgroundColor: "#1a1a1a"
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#000000"
             },
-            package: "com.repright.workoutanalyzer",
-            permissions: [
+            "package": "com.repright.workoutanalyzer",
+            "permissions": [
                 "CAMERA",
-                "RECORD_AUDIO",
-                "WRITE_EXTERNAL_STORAGE",
-                "READ_EXTERNAL_STORAGE"
+                "RECORD_AUDIO"
             ]
         },
-        web: {
-            favicon: "./assets/favicon.png",
-            bundler: "metro"
+        "web": {
+            "favicon": "./assets/favicon.png"
         },
-        plugins: [
+        "plugins": [
             [
                 "expo-camera",
                 {
-                    cameraPermission: "Allow $(PRODUCT_NAME) to access your camera to record workouts.",
-                    microphonePermission: "Allow $(PRODUCT_NAME) to access your microphone to record workout videos.",
-                    recordAudioAndroid: true
+                    "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera to record workouts.",
+                    "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone to record workout videos.",
+                    "recordAudioAndroid": true
                 }
-            ],
-            "expo-av"
+            ]
         ],
-        extra: {
-            eas: {
-                projectId: "repright-workout-analyzer"
-            }
+        "extra": {
+            "ngrokUrl": "https://32ee-108-5-4-98.ngrok-free.app"
         },
-        scheme: "repright"
+        "scheme": "repright"
     }
-}; 
+};
